@@ -23,3 +23,29 @@ La cardinalidad se refiere a la cantidad de las relaciones entre entidades, es d
 - Cardinalidad 0 a 1 o 1 a 1 opcional
 - Cardinalidad 1 a N
 - Cardinalidad 0 a N o 1 a N opcional
+
+### Múltiples muchos
+Es un tipo de cardinalidad especial, es una cardinalidad N a N, es decir, muchos a muchos. Por ejemplo, la entidad «Alumnos» puede pertenecer a «Clases» y también, una entidad «Clases» puede contener muchas entidades «Alumnos».
+
+### Diagrama físico: tipos de datos y constraints
+El siguiente paso al diagrama entidad-relación es el diagrama físico; primero veamos los tipos de datos:
+
+| Texto      | Números       | Fecha/Hora | Lógicos |
+|------------|---------------|------------|---------|
+| CHAR(n)    | INTEGER       | DATE       | BOOLEAN |
+| VARCHAR(n) | BIGINT        | TIME       |         |
+| TEXT       | SMALLINT      | DATETIME   |         |
+|            | DECIMAL(n, s) | TIMESTAMP  |         |
+|            | NUMERIC(n, s) |            |         |
+
+Otra cosa fundamental para la creación de un diagrama físico son los constraints (restricciones):
+
+| Constraint  | Descripción                                                     |
+|-------------|-----------------------------------------------------------------|
+| NOT NULL    | Se asegura que la columna no tenga valores nulos                |
+| UNIQUE      | Se asegura que cada valor en la columna no se repita            |
+| PRIMARY KEY | Es una combinación de NOT NULL y UNIQUE                         |
+| FOREING KEY | Identifica de manera única una tupla en otra tabla              |
+| CHECK       | Se asegura que el valor en la columna cumpla una condición dada |
+| DEFAULT     | Coloca un valor por defecto cuando no hay un valor especificado |
+| INDEX       | Se crea por la columna para permitir búsquedas más rápidas      |
