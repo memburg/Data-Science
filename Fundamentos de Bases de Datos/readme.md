@@ -49,3 +49,91 @@ Otra cosa fundamental para la creación de un diagrama físico son los constrain
 | CHECK       | Se asegura que el valor en la columna cumpla una condición dada |
 | DEFAULT     | Coloca un valor por defecto cuando no hay un valor especificado |
 | INDEX       | Se crea por la columna para permitir búsquedas más rápidas      |
+
+### Diagrama físico: normalización
+La normalización como su nombre lo indica,nos ayuda a dejar todo en una forma normal. Observemos la siguiente tabla:
+
+| alumno | nivel_curso  | nombre_curso     | materia_1 | materia_2 |
+|--------|--------------|------------------|-----------|-----------|
+| Jan    | Maestría     | Data Engineering | MySQL     | Python    |
+| José   | Licenciatura | Programación     | MYSQL     | Python    |
+
+- Primera forma normal (1FN): Atributos atómicos, es decir, sin campos repetidos. Aplicando la primera forma normal a nuestra tabla, el resultado es el siguiente.
+
+| alumnos   |        |              |                  |         |
+|-----------|--------|--------------|------------------|---------|
+| alumno_id | alumno | nivel_curso  | nombre_curso     | materia |
+| 1         | Jan    | Maestría     | Data Engineering | MySQL   |
+| 1         | Jan    | Maestría     | Data Engineering | Python  |
+| 2         | José   | Licenciatura | Programación     | MySQL   |
+| 2         | José   | Licenciatura | Programación     | Python  |
+
+- Segunda forma normal (2FN): Cumple 1FN y cada campo de la tabla debe depender de una clave única. La segunda regla nos indica la separación de nuestra tabla. La razón de la separación es que conceptualmente los alumnos y las materias son dos cosas totalmente distintas.
+
+| alumnos   |        |              |                  |
+|-----------|--------|--------------|------------------|
+| alumno_id | alumno | nivel_curso  | nombre_curso     |
+| 1         | Jan    | Maestría     | Data Engineering |
+| 1         | Jan    | Maestría     | Data Engineering |
+| 2         | José   | Licenciatura | Programación     |
+| 2         | José   | Licenciatura | Programación     |
+
+| materias   |           |         |
+|------------|-----------|---------|
+| materia_id | alumno_id | materia |
+| 1          | 1         | MySQL   |
+| 2          | 1         | Python  |
+| 3          | 2         | MySQL   |
+| 4          | 2         | Python  |
+
+- Tercera forma normal (3FN): Cumple 1FN y 2FN y los campos que NO son clave NO deben tener dependencias. Jan no tiene intrínsecamente ligada la maestría, por lo tanto se puede manejar como una entidad distinta.
+
+| alumnos   |        |           |
+|-----------|--------|-----------|
+| alumno_id | alumno | curso_id  |
+| 1         | Jan    | 1         |
+| 1         | Jan    | 2         |
+
+| cursos   |              |                  |
+|----------|--------------|------------------|
+| curso_id | nivel_curso  | nombre_curso     |
+| 1        | Maestría     | Data Engineering |
+| 1        | Licenciatura | Programación     |
+
+| materias   |           |         |
+|------------|-----------|---------|
+| materia_id | alumno_id | materia |
+| 1          | 1         | MySQL   |
+| 2          | 1         | Python  |
+| 3          | 2         | MySQL   |
+| 4          | 2         | Python  |
+
+- Cuarta forma normal (4FN): Cumple 1FN, 2FN y 3FN; los campos multivaluados se identifican por una clave única.
+
+| alumnos   |        |           |
+|-----------|--------|-----------|
+| alumno_id | alumno | curso_id  |
+| 1         | Jan    | 1         |
+| 1         | Jan    | 2         |
+
+| cursos   |              |                  |
+|----------|--------------|------------------|
+| curso_id | nivel_curso  | nombre_curso     |
+| 1        | Maestría     | Data Engineering |
+| 1        | Licenciatura | Programación     |
+
+| materias   |         |
+|------------|---------|
+| materia_id | materia |
+| 1          | MySQL   |
+| 2          | Python  |
+| 3          | MySQL   |
+| 4          | Python  |
+
+| materia_por_alumno |            |           |
+|--------------------|------------|-----------|
+| mpa_id             | materia_id | alumno_id |
+| 1                  | 1          | 1         |
+| 2                  | 2          | 1         |
+| 3                  | 1          | 2         |
+| 4                  | 2          | 2         |
