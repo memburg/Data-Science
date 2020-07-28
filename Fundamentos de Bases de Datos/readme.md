@@ -152,9 +152,9 @@ Data Definition Language, es un lenguaje que nos ayuda a crear la estructura de 
 - ```drop```: nos ayuda a borrar.
 
 Para el comando ```create``` tenemos tres grandes grupos:
-- bases de datos: repositorio de datos que usa un proyecto.
-- tablas: son la proyección de las entidades.
-- vistas: la proyección de la base de datos de una forma entendible.
+- Bases de datos: repositorio de datos que usa un proyecto.
+- Tablas: son la proyección de las entidades.
+- Vistas: la proyección de la base de datos de una forma entendible.
 
 
 
