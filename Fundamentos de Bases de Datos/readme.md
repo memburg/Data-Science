@@ -137,3 +137,34 @@ La normalización como su nombre lo indica,nos ayuda a dejar todo en una forma n
 | 2                  | 2          | 1         |
 | 3                  | 1          | 2         |
 | 4                  | 2          | 2         |
+
+## RDBMS
+Relational Database Management System, es un un sistema que permite crear, editar y administrar una base de datos relacional. En su gran mayoría usan el Lenguaje de Consultas Estructuradas (SQL).
+
+## SQL
+### Historia de SQL
+Structured Query Language, se crea con la idea de hacer consultas a bases de datos con un lenguaje estandarizado y que pudiese ser usado independientemente del manejador de bases de datos.
+
+### DDL create
+Data Definition Language, es un lenguaje que nos ayuda a crear la estructura de una base de datos. Existen tres grandes comandos: 
+- ```create```: nos ayuda a crear tablas, vistas, índices, etc.
+- ```alter```: nos ayuda a alterar o modificar alguna de las entidades mencionadas.
+- ```drop```: nos ayuda a borrar.
+
+Para el comando ```create``` tenemos tres grandes grupos:
+- bases de datos: repositorio de datos que usa un proyecto.
+- tablas: son la proyección de las entidades.
+- vistas: la proyección de la base de datos de una forma entendible.
+
+
+
+
+
+
+
+
+
+
+
+
+
