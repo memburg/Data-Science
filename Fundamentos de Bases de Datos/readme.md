@@ -147,15 +147,37 @@ Structured Query Language, se crea con la idea de hacer consultas a bases de dat
 
 ### DDL create
 Data Definition Language, es un lenguaje que nos ayuda a crear la estructura de una base de datos. Existen tres grandes comandos: 
-- ```create```: nos ayuda a crear tablas, vistas, índices, etc.
-- ```alter```: nos ayuda a alterar o modificar alguna de las entidades mencionadas.
-- ```drop```: nos ayuda a borrar.
+- `create`: nos ayuda a crear tablas, vistas, índices, etc.
+- `alter`: nos ayuda a alterar o modificar alguna de las entidades mencionadas.
+- `drop`: nos ayuda a borrar.
 
-Para el comando ```create``` tenemos tres grandes grupos:
+Para el comando `create` tenemos tres grandes grupos:
 - Bases de datos: repositorio de datos que usa un proyecto.
 - Tablas: son la proyección de las entidades.
 - Vistas: la proyección de la base de datos de una forma entendible.
 
+### DDL VIEW y DDL ALTER
+Una vista es un concepto útil que sirven para tomar datos de la base de datos, ponerlas en una forma presentable y permite que se consulte de manera recurrente. A continuación se muestra un ejemplo de la creación de una vista:
+
+```mysql
+CRETE VIEW v_brasil_customers AS
+    SELECT customer_name, contact_name
+    FROM customers
+    WHERE country = "Brasil";
+```
+
+`ALTER` nos permite modificar nuestra base de datos. A continuación se muestra un ejemplo del uso de `ALTER`:
+
+```mysql
+ALTER TABLE people
+ADD date_of_birth date;
+
+ALTER TABLE people
+ALTER COLUMN date_of_birth year;
+
+ALTER TABLE people
+DROP COLUMN date_of_birth;
+```
 
 
 
