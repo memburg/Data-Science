@@ -145,7 +145,7 @@ Relational Database Management System, es un un sistema que permite crear, edita
 ### Historia de SQL
 Structured Query Language, se crea con la idea de hacer consultas a bases de datos con un lenguaje estandarizado y que pudiese ser usado independientemente del manejador de bases de datos.
 
-### DDL create
+### DDL
 Data Definition Language, es un lenguaje que nos ayuda a crear la estructura de una base de datos. Existen tres grandes comandos: 
 - `create`: nos ayuda a crear tablas, vistas, índices, etc.
 - `alter`: nos ayuda a alterar o modificar alguna de las entidades mencionadas.
@@ -179,14 +179,59 @@ ALTER TABLE people
 DROP COLUMN date_of_birth;
 ```
 
+### DDL DROP
+Se trata de una de las sentencias más peligrosas de SQL, permite la eliminación de lo que se le indica, veamos un ejemplo:
 
+```mysql
+DROP TABLE people;
 
+DROP DATABASE test_db;
+```
 
+### DML
+Data Manipulation Language, maneja el contenido de la base de datos. Existen cuatro grandes comandos:
 
+- `insert`: permite insertar un nuevo registro o tupla a la base de datos. A continuación se muestra un ejemplo:
 
+```mysql
+INSERT INTO people (last_name, first_name, address, city)
 
+VALUES ('Hernández', 'Laura', 'Calle 21', 'Monterrey'),
+VALUES ('Guerrero', 'Alfonso', 'Calle 83', 'Hidalgo');
+```
 
+- `update`: permite actualizar los datos existentes, `update` no inserta datos que no existan. A continuación se muestra un ejemplo:
 
+```mysql
+UPDATE people
+SET last_name = 'Chávez', city = 'Mérida'
+WHERE person_id = 1;
+
+UPDATE people
+SET first_name = 'Juan'
+WHERE city = 'Mérida'
+
+-- Si no se especifíca una cláusula WHERE, corremos el riegos de modificar de forma masiva nuestra base de datos
+UPDATE people
+SET first_name = 'Juan';
+```
+
+- `delete`: puede borrar el contenido de una tabla. A continuación se muestra un ejemplo:
+
+```mysql
+DELETE FROM people
+WHERE person_id = 1;
+
+-- Borra todo el contenido de la tabla
+DELETE FROM people;
+```
+
+- `select`: trae información de la base de datos, para poder modificar la información de la base de datos, primero se tiene que traer. A continuación se muestra un ejemplo:
+
+```mysql
+SELECT first_name, last_name
+FROM people;
+```
 
 
 
