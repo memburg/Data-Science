@@ -233,5 +233,66 @@ SELECT first_name, last_name
 FROM people;
 ```
 
+## Consultas a una base de datos
+### ¿Por qué las consultas son tan importantes?
+Las consultas en una base de datos juegan un papel muy fundamental, puesto que facilitan de manera considerable los procesos en cualquier empresa.
 
+ETL (Extract Transform Load) hace parte del proceso de integración de datos, mas aun es un componente muy importante que completa el resultado final en la relación de aplicaciones y sistemas.
 
+### Estructura básica de un query
+Las queries son la forma en la que se estructuran las preguntas a la base de datos para que nos traiga la información requerida.
+
+```mysql
+SELECT * -- selecciona todas las columnas
+FROM people -- tabla de la cual se extraé la información
+```
+
+### SELECT
+La sentencia `SELECT` nos permite filtrar la información que solicitamos a la base de datos. Un `SELECT` debe tener como mínimo un `FROM` para poder funcionar. Podemos usar un alias para hacer más legible el resultado de nuestra consulta, esto se logra agregando `AS` a un lado de nuestro atributo.
+
+```mysql
+SELECT
+    title AS Header,
+    pub_date AS Published
+FROM posts;
+```
+
+`SELECT` nos permite usar datos que se crean en el momento.
+
+```mysql
+SELECT COUNT(*) AS NumberOfPosts
+FROM posts;
+```
+
+### FROM
+Indica de dónde se deben traer los datos y puede ayudar a hacer sentencias y filtros complejos cuando se quieren unir tablas. La sentencia compañera que nos ayuda con este proceso es `JOIN`.
+
+Los diagramas de Venn son círculos que se tocan en algún punto para ver dónde está la intersección de conjuntos. Ayudan mucho para poder formular la sentencia `JOIN` de la manera adecuada dependiendo del query que se quiere hacer.
+
+### WHERE
+Nos ayuda a filtrar registros (filas de la tabla). Podemos filtrar por ejemplo, a partir de cierto numero de ID (con el operador de mayor o menor).
+
+- `LIKE`: cuando no conocemos la cadena exacta, podemos filtrar según alguna caracteristica. Por ejemplo:
+
+    `WHERE title LIKE '%scandal%'` lo que hace es buscar aquellos títulos que tengan la palabra escandalo en alguna parte. Sin embargo, como los signos porcentuales indican que hay algo mas, si quitamos, por ejemplo, el del final (quedando `'%scandal'`), estaremos buscando aquellos títulos que terminen con la palabra «escándalo», ya que indicamos que después de esta palabra no hay nada más.
+
+- `BETWEEN`: la traducción de esta palabra al español es «entre». Por lo tanto, como podemos imaginar, filtrará entre dos valores a designar. Por ejemplo:
+
+    `WHERE pub_date BETWEEN '2019-01-01' AND '2019-01-10'` filtrará las publicaciones con fecha de publicación entre el 1 de enero de 2019 y 10 de enero de 2019. Puede utilizarse tambien con valores numéricos (y por lo tanto, por ejemplo, con los IDs).
+
+### WHERE (NULL y NOT NULL)
+`NULL` no corresponde a ningún valor en particular, sino a una "ausencia" de valor, por lo tanto un `NOT NULL` correspondería a que no hay una aparente ausencia, es decir, existe un valor así sea un 0. `NULL` no es igual a nada por lo que en SQL no se le puede asociar con el operador igual que, en vez de esto se le atribuye en un `WHERE` con un `IS NULL`. Para valores `NOT NULL`, también se aplica la misma sintaxis. Para agregar un criterio adicional con `WHERE`, se usa `AND`.
+
+### GROUP BY
+`GROUP BY` nos permite hacer consultas mucho mas organizadas, de manera que la consulta se ejecuta dividida por los diferentes valores que posee la columna, de esta manera podemos determinar no solo el número de valores diferentes que puede tener un atributo, sino muchos otros parámetros como la cantidad de los mismos (con `COUNT(*)`).
+
+```mysql
+SELECT status, SUM(id) id_sum
+FROM posts
+GROUP BY status;
+```
+
+### ORDER BY y HAVING
+A través de `ORDER BY` podemos ordenar nuestras consultas mediante criterios que podemos asignar mediante esta sentencia. Con la palabra reservada `ASC`, podemos ordenar nuestra consulta de manera ascendente, y a través de la palabra reservada `DESC`, podemos ordenar la misma de forma descendente. Ambas sentencias funcionan de manera similar tanto para letras como para números, en el caso de las letras, si es de forma ascendente, las letras irán por orden alfabetico de la A a la Z.
+
+`HAVING` nos permite hacer lo similar a un `WHERE`, a diferencia de que `WHERE` no es posible usarlo cuando estamos haciendo consultas con agrupaciones, cosa que si se puede hacer con `HAVING`.
