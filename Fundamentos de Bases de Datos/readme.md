@@ -296,3 +296,55 @@ GROUP BY status;
 A través de `ORDER BY` podemos ordenar nuestras consultas mediante criterios que podemos asignar mediante esta sentencia. Con la palabra reservada `ASC`, podemos ordenar nuestra consulta de manera ascendente, y a través de la palabra reservada `DESC`, podemos ordenar la misma de forma descendente. Ambas sentencias funcionan de manera similar tanto para letras como para números, en el caso de las letras, si es de forma ascendente, las letras irán por orden alfabetico de la A a la Z.
 
 `HAVING` nos permite hacer lo similar a un `WHERE`, a diferencia de que `WHERE` no es posible usarlo cuando estamos haciendo consultas con agrupaciones, cosa que si se puede hacer con `HAVING`.
+
+### El interminable agujero de conejo (Nested queries)
+Una nested query sirve para hacer una consulta dentro de otra consulta (normalmente dentro de la sentencia FROM o WHERE), esto funciona como alternativa para los JOIN o como condicional de un query dentro de otro. La profundidad de un nested query es infinita, por lo que se pueden hacer infinidad de consultas dentro de otras. El punto negativo de esto, es que puede volverse lento a la hora de ejecutar.
+
+- Las consultas anidadas son la mejor opción cuando los valores dependen de otras tablas, y estas no se encuentran relacionadas entre sí.
+
+- Las consultas anidadas son la mejor opción para casos de INSERT, DELETE, UPDATE, cuya condición dependa del escenario explicado en el punto anterior.
+
+- Los JOINS son la mejor opción para casos de SELECT.
+
+### ¿Cómo convertir una pregunta en un query SQL?
+- `SELECT`: lo que quieres mostrar.
+- `FROM`: de dónde voy a tomar los datos.
+- `GROUP BY`: los rubros por los que me interesa agrupar la información.
+- `ORDER BY`: el orden en que quiero representar mi información.
+- `HAVING`: los filtros que quiero que mis datos agrupados tengan.
+
+## Introducción a las bases de datos NO relacionales
+### ¿Qué son y cuáles son los tipos de bases de datos no relacionales?
+Las bases de datos no relacionales (a veces llamadas NoSQL, es decir no solo SQL) contienen una amplia gama de DBMSs que difieren del modelo de bases de datos relacionales y como característica más destacada es que no usan SQL como su lenguaje principal para consultas. Entre todas estas tenemos:
+
+
+- Clave - valor: Son ideales para almacenar y extraer datos con una clave única. Manejan los diccionarios de manera excepcional. Ejemplos: DynamoDB, Cassandra.
+
+- Basadas en documentos: Son una implementación de clave valor que varía en la forma semiestructurada en que se trata la información. Ideal para almacenar datos JSON y XML. Ejemplos: MongoDB, Firestore.
+
+- Basadas en grafos: Basadas en teoría de grafos, sirven para entidades que se encuentran interconectadas por múltiples relaciones. Ideales para almacenar relaciones complejas. Ejemplos: neo4j, TITAN.
+
+- En memoria: Pueden ser de estructura variada, pero su ventaja radica en la velocidad, ya que al vivir en memoria la extracción de datos es casi inmediata. Ejemplos: Memcached, Redis.
+
+- Optimizadas para búsquedas: Pueden ser de diversas estructuras, su ventaja radica en que se pueden hacer queries y búsquedas complejas de manera sencilla. Ejemplos: BigQuery, Elasticsearch.
+
+### Servicios administrados y jerarquía de datos
+
+## Manejo de modelos de datos en bases de datos no relacionales
+### Top level collection con Firebase
+### Creando y borrando documentos en Firestore
+### Colecciones vs subcolecciones
+
+## Bases de datos en la vida real
+### Introducción
+### Big data
+### Data warehouse
+### Data mining
+### ETL
+### Business Intelligence
+### Machine Learning
+### Data Science
+### ¿Por qué aprender bases de datos hoy?
+
+## Bonus
+### Bases de datos relaciones vs no relacionales
