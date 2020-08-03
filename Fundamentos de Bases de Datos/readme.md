@@ -329,9 +329,50 @@ Las bases de datos no relacionales (a veces llamadas NoSQL, es decir no solo SQL
 - Optimizadas para búsquedas: Pueden ser de diversas estructuras, su ventaja radica en que se pueden hacer queries y búsquedas complejas de manera sencilla. Ejemplos: BigQuery, Elasticsearch.
 
 ### Servicios administrados y jerarquía de datos
+Firebase es una plataforma de Google para el desarrollo de aplicaciones web y móviles a modo de BaaS (Backend as Service). Firebase ofrece 2 servicios para bases de datos, los cuales son Realtime Database y Cloud Firestore.
+
+La jerarquía de datos consta primeramente de la base de datos como tal, seguido ya no de tablas, sino de colecciones y finalmente los documentos como tal y que correspondería a una tupla en una base de datos basada en SQL.
+
+Cloud Firestore es uno de los servicios de Firestore en bases de datos, que se basa en **documentos**, sus características principales son la flexibilidad, escalabilidad para programar en servers, dispositivos móviles y para la web desde Firebase y Google Cloud.
 
 ## Manejo de modelos de datos en bases de datos no relacionales
 ### Top level collection con Firebase
+
+1. Accedemos a la consola de Firebase con nuestras credenciales de Google y hacemos clic sobre "Crear proyecto".
+![Step_01](img/01.png)
+
+2. Le ponemos un nombre a nuestro proyecto, debe ser un ID único, por lo tanto, si hay algún proyecto que ya tenga el nombre que queremos, Google modificará el nombre del nuestro para que su creación sea posible; finalmente hacemos clic en continuar.
+![Step_02](img/02.png)
+
+3. Integramos o no Google Analytics y creamos nuestro proyecto.
+![Step_03](img/03.png)
+
+4. Se nos indicará que nuestro proyecto ha sido creado, y luego damos clic en continuar.
+![Step_04](img/04.png)
+
+5. Hacemos clic en "Database"
+![Step_05](img/05.png)
+
+6. Damos clic en "Crear base de datos"
+![Step_06](img/06.png)
+
+7. Definimos las reglas de seguridad, pódemos elegir el modo que sea y damos clic en "Siguiente".
+![Step_07](img/07.png)
+
+8. Seleccionamos la ubicación geográfica que deseemos y damos clic en "Listo".
+![Step_08](img/08.png)
+
+9. Damos clic en "Iniciar colección".
+![Step_09](img/09.png)
+
+10. Le asignamos un ID a nuestra colección, en este ejemplo será "people" y damos clic en "Siguiente"
+![Step_10](img/10.png)
+
+11. Creamos el campo "last_name" de tipo "string" con un valor vacío, agregamos un ID automático y finalmente damos clic en "Guardar".
+
+12. El resultado será algo como esto:
+![Step_11](img/11.png)
+
 ### Creando y borrando documentos en Firestore
 ### Colecciones vs subcolecciones
 
