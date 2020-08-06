@@ -337,7 +337,6 @@ Cloud Firestore es uno de los servicios de Firestore en bases de datos, que se b
 
 ## Manejo de modelos de datos en bases de datos no relacionales
 ### Top level collection con Firebase
-
 1. Accedemos a la consola de Firebase con nuestras credenciales de Google y hacemos clic sobre "Crear proyecto".
 ![Step_01](img/01.png)
 
@@ -373,17 +372,67 @@ Cloud Firestore es uno de los servicios de Firestore en bases de datos, que se b
 12. El resultado será algo como esto:
 ![Step_11](img/11.png)
 
-### Creando y borrando documentos en Firestore
+### Tipos de datos en Firestore
+Firestore considera varios tipos de datos:
+
+1. String: cualquier tipo de valor alfanumérico
+2. Number: soporta enteros y flotantes.
+3. Boolenan: los clásicos valores `True` y `False`.
+4. Map: permite agregar un documento dentro de otro.
+5. Array: permite agregar un conjunto de datos (soporte multi type) sin nombre e identificador.
+6. Null: indica que no se ha definido un valor.
+7. Timestamp: permite almacenar fechas (guarda el año, mes, día y hora).
+8. Geopoint: guarda una localización geográfica (coordenadas latitud-longitud).
+9. Reference: permite referencia un documento (relaciona dos documentos, no importa su colección).
+
 ### Colecciones vs subcolecciones
+Una subcoleccion difiere totalmente de un top level collection, en cuestión de que se crearía una colección dentro de un documento en cuestión, por lo que se crearía una colección aparte de ese documento en específico.
 
 ## Bases de datos en la vida real
 ### Introducción
+Hoy en dia, se utilizan diversos tipos de bases de datos segun el problema que se quiera resolver:
+
+- Las bases de datos relacionales, durante mucho tiempo, fueron utilizadas para resolver todo tipo de situaciones, pero al aumentar enormemente el numero de datos a manejar, se volveron ineficientes en muchos casos.
+
+- Firestore o MongoDB nos permiten obtener los datos actuales de la aplicacion de manera simple. Sin embargo, no nos permite hacer, por ejemplo, queries muy complejos.
+
+- En una misma disciplina, es probable que haya que utilizar mas de un tipo de bases de datos.
+
 ### Big data
+Cuando hablamos de Big Data nos referimos a conjuntos de datos o combinaciones de conjuntos de datos cuyo tamaño (volumen), complejidad (variabilidad) y velocidad de crecimiento (velocidad) dificultan su captura, gestión, procesamiento o análisis mediante tecnologías y herramientas convencionales.
+
+La tendencia comenzó con compañías como YouTube al tener la necesidad de guardar y consultar mucha información de manera rápida.
+
 ### Data warehouse
+Un Data Warehouse es una colección de datos:
+
+- Orientada a sujetos
+- Integrada
+- Variante en el tiempo
+- No volátil
+
+Que soporta el proceso de toma de decisiones. Un Data Warehouse soporta procesamiento informático,
+brindando una sólida plataforma de datos históricos, integrados, de los cuales hacer análisis.
+
 ### Data mining
+El datamining (minería de datos), es el conjunto de técnicas y tecnologías que permiten explorar grandes bases de datos, de manera automática o semiautomática, con el objetivo de encontrar patrones repetitivos, tendencias o reglas que expliquen el comportamiento de los datos en un determinado contexto.
+
 ### ETL
+ETL son las siglas de Extract, Transform, Load (extraer, transformar y cargar). Se trata de tomar datos de archivos muertos y convertirlos en algo que sea de utilidad para el negocio. También ayuda a tomar los datos vivos de la aplicación, transformarlos y guardarlos en un data warehouse periódicamente.
+
 ### Business Intelligence
+Tener todos los datos (actuales e históricos) de manera clara y oportuna, para que sean útiles para el momento de tomar decisiones de negocios basados en esos datos.
+
+En definitiva, una solución BI completa permite:
+
+- Observar ¿qué está ocurriendo?
+- Comprender ¿por qué ocurre?
+- Predecir ¿qué ocurriría?
+- Colaborar ¿qué debería hacer el equipo?
+- Decidir ¿qué camino se debe seguir?
+
 ### Machine Learning
+
 ### Data Science
 ### ¿Por qué aprender bases de datos hoy?
 
