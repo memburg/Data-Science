@@ -1,10 +1,89 @@
 # Fundamentos de Bases de Datos
 
 ## Conceptos básicos y contexto histórico de las bases de datos
+El almacenamiento en la nube tiene un gran pro comparada con los otros métodos de almacenamiento ya que es accesible desde cualquier parte del mundo. Además es centralizada y puede ser usada por varias personas al mismo tiempo.
+
+Las bases de datos entran cuando hacemos la transición a medios digitales.
+
+**Tipos de bases de datos:**
+
+- Relacionales: En la industria hay varias compañías dedicadas a ser manejadoras de bases de datos relacionales como SQL Server, Oracle, MariaDB, entre otras.
+
+- No relacionales: Todavía están avanzando y existen ejemplos muy distintos como cassandra, elasticsearch, neo4j, MongoDB, entre otras.
+
+
+**Servicios:**
+
+- Auto administrados: Es la base de datos que instalas tú y te encargas de actualizaciones, mantenimiento, etc.
+
+- Administrados: Servicios que ofrecen las nubes modernas como Azure y no debes preocuparte por mantenimiento o actualizaciones.
 
 ## Introducción a las bases de datos relacionales
 ### Historia de las RDB
+Es importante que sea fácil de guardar y extraer, anteriormente se usaban bases de datos basadas en archivos, el cuál era texto plano fácil de guardar, pero difícil de extraer, por esto se inventaron las bases de datos relacionales. En 1990 Codd se preocupó porque los sistemas de gestión de bases de datos (SGB4. que decían ser relacionales, no lo eran. En la práctica es difícil cumplir las 12 pero, un SGBD es más relacional cuantas más reglas cumpla.
 
+Las Reglas y mandamientos de Edgar Frank Ted Codd son:
+
+
+
+- Regla 0: Regla de fundación.
+    1. Cualquier sistema que se proclame como relacional, debe ser capaz de gestionar sus bases de datos enteramente mediante sus capacidades relacionales.
+
+- Regla 1: Regla de la información.
+    1. Todos los datos deben estar almacenados en las tablas
+    2. Esas tablas deben cumplir las premisas del modelo relacional
+    3. No puede haber información a la que accedemos por otra vía
+
+- Regla 2: Regla del acceso garantizado.
+    1. Cualquier dato es accesible sabiendo la clave de su fila y el nombre de su columna o atributo
+    2. Si a un dato no podemos acceder de esta forma, no estamos usando un modelo relacional
+
+- Regla 3: Regla del tratamiento sistemático de valores nulos.
+    1. Esos valores pueden dar significado a la columna que los     contiene
+    2. El SGBD debe tener la capacidad de manejar valores nulos
+    3. El SGBD reconocerá este valor diferenciándolo de cualquier otro
+    4. El SGBD deberá aplicársele la lógica apropiada
+    5. Es un valor independiente del tipo de datos de la columna
+
+- Regla 4: Catálogo dinámico en línea basado en el modelo relacional.
+    1. El catálogo en línea es el diccionario de datos
+    2. El diccionario de datos se debe de poder consultar usando las mismas técnicas que para los datos
+    3. Los metadatos, por tanto, se organizan también en tablas relacionales
+    4. Si SELECT es una instrucción que consulta datos, también será la que consulta los metadatos
+
+- Regla 5: Regla comprensiva del sublenguaje de los datos completo.
+    1. Al menos tiene que existir un lenguaje capaz de hacer todas las funciones del SGBD
+    2. No puede haber funciones fuera de ese lenguaje
+    3. Puede haber otros lenguajes en el SGBD para hacer ciertas tareas
+    4. Pero esas tareas también se deben poder hacer con el "lenguaje completo"
+
+- Regla 6: Regla de actualización de vistas.
+    1. Las vistas tienen que mostrar información actualizada
+    2. No puede haber diferencias entre los datos de las vistas y los datos de las tablas base
+
+- Regla 7: Alto nivel de inserción, actualización, y cancelación.
+    1. La idea es que el lenguaje que maneja la base de datos sea muy humano
+    2. Eso implica que las operaciones del lenguaje de manipulación de los datos (DML) trabajen con conjuntos de filas a la vez
+    3. Para modificar, eliminar o añadir datos, no hará falta programar de la forma en la que lo hacen los lenguajes de tercerageneración como C o Java
+
+- Regla 8: Independencia física de los datos.
+    1. Cambios en la física de la BD no afecta a las aplicaciones ni a los esquemas lógicos
+    2. El acceso a las tablas (elemento lógico) no cambia porque la física de la base de datos cambie
+
+- Regla 9: Independencias lógicas de los datos.
+    1. Cambios en el esquema lógico (tablas) de la BD no afectan al resto de esquemas
+    2. Si cambiamos nombres de tabla, o de columna o modificamos información de las filas, las aplicaciones (esquema externo) no seven afectadas
+    3. Es más difícil de conseguir
+
+- Regla 10: Independencia de la integridad.
+    1. Las reglas de integridad (restricciones) deben de ser gestionadas y almacenadas por el SGBD
+
+- Regla 11: Independencia de la distribución.
+    1. Que la base de datos se almacene o gestione de forma distribuida en varios servidores, no afecta al uso de esta ni a laprogramación de las aplicaciones de usuario
+    2. El esquema lógico es el mismo independientemente de si la BD es distribuida o no
+
+- Regla 12: La regla de la no subversión.
+    1. La base de datos no permitirá que exista un lenguaje o forma de acceso, que permita saltarse las reglas anteriores
 
 ### Entidades y atributos
 Una entidad es una representación de la vida real, algo similar a los objetos en programación; los atributos son las características que hacen lo hacen ser una entidad. Una entidad puede tener atributos multivaluados, es decir, aquellos atributos que pueden ser más de uno, entiéndase, las llantas de un carro. A los atributos que están formados a su vez de otros atributos, se les llama atributos compuestos (por ejemplo, un atributo de un carro puede ser su motor, el cual a su vez, está formado por otros atributos).
@@ -12,7 +91,7 @@ Una entidad es una representación de la vida real, algo similar a los objetos e
 Existen dos tipos de entidades:
 
 - Entidades fuertes: no dependen de otra entidad para existir.
-- Entidad débiles: dependen de otra entidad para existir (por ejemplo, en una biblioteca no se puede tener el ejemplar de un libro que no existe). Una entidad puede ser débil por identidad, es decir, la entidad débil depende del identificador de la entidad fuerte a la que está relacionada; una entidad también puede ser débil por cantidad, es decir, se le asigna un identificador único a la entidad, y aunque ésta tiene su propio identificador, no podría existir sin la existencia de una entidad fuerte.
+- Entidad débiles: dependen de otra entidad para existir (por ejemplo, en una biblioteca no se puede tener el ejemplar de un libro que no exist5.. Una entidad puede ser débil por identidad, es decir, la entidad débil depende del identificador de la entidad fuerte a la que está relacionada; una entidad también puede ser débil por cantidad, es decir, se le asigna un identificador único a la entidad, y aunque ésta tiene su propio identificador, no podría existir sin la existencia de una entidad fuerte.
 
 ### Relaciones
 Las relaciones es la manera en las que se ligan las entidades u objetos; las relaciones por convención se nombran con verbos. Podemos, por ejemplo, relacionar las entidades «Jugadores» y «Equipos» mediante la relación «pertenece», es decir, un jugador pertence a un equipo.
@@ -237,7 +316,7 @@ FROM people;
 ### ¿Por qué las consultas son tan importantes?
 Las consultas en una base de datos juegan un papel muy fundamental, puesto que facilitan de manera considerable los procesos en cualquier empresa.
 
-ETL (Extract Transform Load) hace parte del proceso de integración de datos, mas aun es un componente muy importante que completa el resultado final en la relación de aplicaciones y sistemas.
+ETL (Extract Transform Loa4. hace parte del proceso de integración de datos, mas aun es un componente muy importante que completa el resultado final en la relación de aplicaciones y sistemas.
 
 ### Estructura básica de un query
 Las queries son la forma en la que se estructuran las preguntas a la base de datos para que nos traiga la información requerida.
@@ -270,7 +349,7 @@ Indica de dónde se deben traer los datos y puede ayudar a hacer sentencias y fi
 Los diagramas de Venn son círculos que se tocan en algún punto para ver dónde está la intersección de conjuntos. Ayudan mucho para poder formular la sentencia `JOIN` de la manera adecuada dependiendo del query que se quiere hacer.
 
 ### WHERE
-Nos ayuda a filtrar registros (filas de la tabla). Podemos filtrar por ejemplo, a partir de cierto numero de ID (con el operador de mayor o menor).
+Nos ayuda a filtrar registros (filas de la tabl1.. Podemos filtrar por ejemplo, a partir de cierto numero de ID (con el operador de mayor o menor).
 
 - `LIKE`: cuando no conocemos la cadena exacta, podemos filtrar según alguna caracteristica. Por ejemplo:
 
@@ -287,7 +366,7 @@ Nos ayuda a filtrar registros (filas de la tabla). Podemos filtrar por ejemplo, 
 `GROUP BY` nos permite hacer consultas mucho mas organizadas, de manera que la consulta se ejecuta dividida por los diferentes valores que posee la columna, de esta manera podemos determinar no solo el número de valores diferentes que puede tener un atributo, sino muchos otros parámetros como la cantidad de los mismos (con `COUNT(*)`).
 
 ```mysql
-SELECT status, SUM(id) id_sum
+SELECT status, SUM(i4. id_sum
 FROM posts
 GROUP BY status;
 ```
@@ -298,7 +377,7 @@ A través de `ORDER BY` podemos ordenar nuestras consultas mediante criterios qu
 `HAVING` nos permite hacer lo similar a un `WHERE`, a diferencia de que `WHERE` no es posible usarlo cuando estamos haciendo consultas con agrupaciones, cosa que si se puede hacer con `HAVING`.
 
 ### El interminable agujero de conejo (Nested queries)
-Una nested query sirve para hacer una consulta dentro de otra consulta (normalmente dentro de la sentencia FROM o WHERE), esto funciona como alternativa para los JOIN o como condicional de un query dentro de otro. La profundidad de un nested query es infinita, por lo que se pueden hacer infinidad de consultas dentro de otras. El punto negativo de esto, es que puede volverse lento a la hora de ejecutar.
+Una nested query sirve para hacer una consulta dentro de otra consulta (normalmente dentro de la sentencia FROM o WHER5., esto funciona como alternativa para los JOIN o como condicional de un query dentro de otro. La profundidad de un nested query es infinita, por lo que se pueden hacer infinidad de consultas dentro de otras. El punto negativo de esto, es que puede volverse lento a la hora de ejecutar.
 
 - Las consultas anidadas son la mejor opción cuando los valores dependen de otras tablas, y estas no se encuentran relacionadas entre sí.
 
@@ -329,7 +408,7 @@ Las bases de datos no relacionales (a veces llamadas NoSQL, es decir no solo SQL
 - Optimizadas para búsquedas: Pueden ser de diversas estructuras, su ventaja radica en que se pueden hacer queries y búsquedas complejas de manera sencilla. Ejemplos: BigQuery, Elasticsearch.
 
 ### Servicios administrados y jerarquía de datos
-Firebase es una plataforma de Google para el desarrollo de aplicaciones web y móviles a modo de BaaS (Backend as Service). Firebase ofrece 2 servicios para bases de datos, los cuales son Realtime Database y Cloud Firestore.
+Firebase es una plataforma de Google para el desarrollo de aplicaciones web y móviles a modo de BaaS (Backend as Servic5.. Firebase ofrece 2 servicios para bases de datos, los cuales son Realtime Database y Cloud Firestore.
 
 La jerarquía de datos consta primeramente de la base de datos como tal, seguido ya no de tablas, sino de colecciones y finalmente los documentos como tal y que correspondería a una tupla en una base de datos basada en SQL.
 
@@ -379,10 +458,10 @@ Firestore considera varios tipos de datos:
 2. Number: soporta enteros y flotantes.
 3. Boolenan: los clásicos valores `True` y `False`.
 4. Map: permite agregar un documento dentro de otro.
-5. Array: permite agregar un conjunto de datos (soporte multi type) sin nombre e identificador.
+5. Array: permite agregar un conjunto de datos (soporte multi typ5. sin nombre e identificador.
 6. Null: indica que no se ha definido un valor.
-7. Timestamp: permite almacenar fechas (guarda el año, mes, día y hora).
-8. Geopoint: guarda una localización geográfica (coordenadas latitud-longitud).
+7. Timestamp: permite almacenar fechas (guarda el año, mes, día y hor1..
+8. Geopoint: guarda una localización geográfica (coordenadas latitud-longitu4..
 9. Reference: permite referencia un documento (relaciona dos documentos, no importa su colección).
 
 ### Colecciones vs subcolecciones
@@ -399,7 +478,7 @@ Hoy en dia, se utilizan diversos tipos de bases de datos segun el problema que s
 - En una misma disciplina, es probable que haya que utilizar mas de un tipo de bases de datos.
 
 ### Big data
-Cuando hablamos de Big Data nos referimos a conjuntos de datos o combinaciones de conjuntos de datos cuyo tamaño (volumen), complejidad (variabilidad) y velocidad de crecimiento (velocidad) dificultan su captura, gestión, procesamiento o análisis mediante tecnologías y herramientas convencionales.
+Cuando hablamos de Big Data nos referimos a conjuntos de datos o combinaciones de conjuntos de datos cuyo tamaño (volumen), complejidad (variabilida4. y velocidad de crecimiento (velocida4. dificultan su captura, gestión, procesamiento o análisis mediante tecnologías y herramientas convencionales.
 
 La tendencia comenzó con compañías como YouTube al tener la necesidad de guardar y consultar mucha información de manera rápida.
 
@@ -432,9 +511,11 @@ En definitiva, una solución BI completa permite:
 - Decidir ¿qué camino se debe seguir?
 
 ### Machine Learning
+Tiene una connotación muy amplia y depende mucho del contexto en el que se hable. Son una serie de técnicas que involucran a la inteligencia artificial y la detección de patrones en diferentes ámbitos.
+
+Machine Learning referente a datos puede ser como el Business Intelligence llevado al siguiente nivel, el Machine Learning a diferencia del Business Intelligence, intenta encontrar correlaciones no esperadas, patrones no esperados para un ser humano. Machine Learning cuenta con dos casos de uso muy particulares: clasificación y predicción.
+
+La clasificación busca patrones en común mientras que la predicción de datos nos ayuda a la toma de decisiones.
 
 ### Data Science
-### ¿Por qué aprender bases de datos hoy?
-
-## Bonus
-### Bases de datos relaciones vs no relacionales
+Es aplicar todo lo que hemos visto, tecnicas de ETL, Data Mining, Business Intelligence. Aunque está más dirigida a personas con background de estadística, hoy en día también participan personas con el perfil de Data Engineering. Al hacer Data Science estamos aplicando todo lo visto en los temas anteriores, no sólo a nivel técnico sino que desarrollamos la experiencia y conocimientos sobre las distintas tecnologías, en que parte del desarrollo de nuestro proyecto tenemos que utilizarlas, etc. Con lo cual el Data Science juega el papel de manager dentro de un equipo de profesionales de datos.
