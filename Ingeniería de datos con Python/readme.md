@@ -89,4 +89,4 @@ Para inicializar Jupyter Notebooks escribimos el siguiente comando en la consola
 - Cualitativos vs cuantitativos
 - Tiempo real vs históricos
 
-[Notebook](Tipos de Datos.ipynb)
+[Notebook](tipos_de_datos.ipynb)
