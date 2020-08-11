@@ -34,7 +34,7 @@ Este campo se auxilia de muchos otros campos:
 - Análisis de señales digitales
 - Análisis de datos en la nube (Big Data)
 
-## Roles
+### Roles
 - Data Engineer:
     - Se encarga de obtener los datos
     - Limpiarlos y estructurarlos para posterior análisis
@@ -52,7 +52,7 @@ Este campo se auxilia de muchos otros campos:
     - Creación de sistemas predictivos y prescriptivos de gran escala
     - Mantenimiento y ajustes del modelo
 
-## Configuración del entorno
+### Configuración del entorno
 1. Acceder a la página oficial de Anaconda
 2. Descargamos la versión individual para Linux (o el sistema operativo)
 3. En en caso de Linux nos descargará un archivo *.sh*
@@ -61,7 +61,32 @@ Este campo se auxilia de muchos otros campos:
 
 En caso de seguir las indicaciones no debería ocurrir ningún problema.
 
-## Jupyter Notebooks
+### Jupyter Notebooks
 Es un entorno de programación en la cual se puede incluir código ambiguo, imágenes y markdown.
 
 Para inicializar Jupyter Notebooks escribimos el siguiente comando en la consola: `jupyter notebook`
+
+### Profundizando en tipos de datos
+
+- Tipos de datos:
+    - int, str, bool, float, hex, oct, datetime, objetos especiales
+
+- Estructurados:
+    - Bases de datos
+    - Data Warehouse
+    
+- Semi estructurados:
+    - JSON APIs
+    - Datos tabulares (CSV, Excel)
+    
+- No estructurados:
+    - HTML
+    - Texto libre
+    - Curriculum Vitaes
+    - Imágenes, audio, social media
+    - Datos científicos
+    
+- Cualitativos vs cuantitativos
+- Tiempo real vs históricos
+
+[Notebook](Tipos de Datos.ipynb)
