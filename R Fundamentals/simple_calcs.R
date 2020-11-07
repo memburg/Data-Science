@@ -25,3 +25,22 @@ grade_q_3
 
 final_grade = grade_q_1 + grade_q_2 + grade_q_3
 final_grade
+
+# Set root path
+setwd("/home/ramby/Desktop/R Fundamentals/")
+mtcars = read.csv("mtcars.csv", header=TRUE)
+orangeec = read.csv("orangeec.csv", header=TRUE)
+mtcars$vs = as.logical(mtcars$vs)
+mtcars$am = as.logical(mtcars$am)
+summary(mtcars)
+mtcars
+wt = (mtcars$wt * 1000) / 2
+wt
+mtcars.new = transform(mtcars, wt = wt * 1000 / 2.204623)
+mtcars.new
+
+summary(mtcars.new)
+
+# Orange economy
+str(orangeec)
+summary(orangeec)
